@@ -1,0 +1,43 @@
+NAME		MZ700_ROM;
+PARTNO		16V8;
+REVISION	A;
+DATE		24/8/10;
+DESIGNER	yanataka;
+COMPANY       None;
+ASSEMBLY	None;
+LOCATION	None;
+DEVICE		G16V8;
+
+/* INPUTS... */
+Pin   1 = IORQ;
+Pin   2 = WR;
+Pin   3 = A7;
+Pin   4 = A6;
+Pin   5 = A5;
+Pin   6 = A4;
+Pin   7 = A3;
+Pin   8 = A2;
+Pin   9 = A1;
+Pin  11 = A0;
+Pin  13 = RESET;
+Pin  18 = RD;
+
+/* OUTPUTS... */
+Pin  12 = ROMOE;
+Pin  14 = RAMSEL;
+Pin  16 = ROMSEL;
+Pin  17 = LATCH;
+
+/** Logic **/
+EX = !IORQ & !WR & A7 & A6 & A5 & !A4& !A3;
+/* $E1 */
+E1 = EX & !A2 & !A1 & A0;
+/* $E3 */
+E3 = EX & !A2 & A1 & A0;
+/* $E4 */
+E4 = EX & A2 & !A1 & !A0;
+
+ROMSEL = E3 # E4 # RESET;
+RAMSEL = E1;
+LATCH = (LATCH # ROMSEL) & !RAMSEL;
+ROMOE = RD # !LATCH;
