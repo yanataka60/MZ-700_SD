@@ -49,9 +49,9 @@ https://github.com/yanataka60/MZ80K_SD?tab=readme-ov-file#rom%E3%83%97%E3%83%AD%
 
 　なお、ロジックアナライザを使い、
 
-　　バンク切替対応基板ではOUT (E1h),AでF000h～FFFFhアクセス時にもROMCEがDisableであり、OUT (E3h),A、OUT (E4h),AではF000h～FFFFhアクセス時にROMCEがEnableになることは確認しています。
+　　バンク切替対応基板ではOUT (E1h),AでF000h～FFFFhアクセス時にもROMOEがDisableであり、OUT (E3h),A、OUT (E4h),AではF000h～FFFFhアクセス時にROMOEがEnableになることは確認しています。
 
-　　未対策のMZ-80K_SD Rev1.5.3基板ではOUT (E1h),A、OUT (E3h),A、OUT (E4h),Aいずれの状態でもF000h～FFFFhアクセス時にROMCEはEnableのままです。
+　　未対策のMZ-80K_SD Rev1.5.3基板ではOUT (E1h),A、OUT (E3h),A、OUT (E4h),Aいずれの状態でもF000h～FFFFhアクセス時にROMCEはEnableです。
 
 ## 謝辞
 　基板の作成に当たり以下のデータを使わせていただきました。ありがとうございました。
