@@ -1,4 +1,4 @@
-# MZ-80K_SDをMZ-700のバンク切替に対応(テスト中)
+# MZ-80K_SDをMZ-700のバンク切替対応基板へ(テスト中)
 
 ![MZ-700_SD](https://github.com/yanataka60/MZ-700_SD/blob/main/JPEG/MZ-700_SD_1.JPG)
 
@@ -29,13 +29,29 @@ https://github.com/yanataka60/MZ80K_SD?tab=readme-ov-file#rom%E5%88%87%E3%82%8A%
 https://github.com/yanataka60/MZ80K_SD?tab=readme-ov-file#%E9%83%A8%E5%93%81
 
 ## GAL16V8プログラム
-Wincuplフォルダ内のMZ700_ROM.jedをROMライター(TL866II Plus等)を使って書き込んでください。
+　Wincuplフォルダ内のMZ700_ROM.jedをROMライター(TL866II Plus等)を使って書き込んでください。
 
-## ROMプログラムについて
-## Arduinoプログラム
-以下、MZ-80K_SD Rev1.5.3と同様ですのでMZ-80K_SDプロジェクトを参照してください。。
+## ROMプログラムについて、Arduinoプログラム等
+　以下、MZ-80K_SD Rev1.5.3と同様ですのでMZ-80K_SDプロジェクトを参照してください。。
 
 https://github.com/yanataka60/MZ80K_SD?tab=readme-ov-file#rom%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+
+## テストプログラム
+　RAMへの書込みが正常に行われ、読み出す時にはROMのデータと混じらずに書き込んだデータと同じ値が正常に読み出せること、またROMを読み出してもデータが不変であることを確認するためにテストプログラムを作成しました。
+
+　Z80フォルダTESTフォルダ内のTEST-MZ700.MZTを実行するとROMを読出して比較、RAMに書込み、読出して比較をバンク切替しながらF000hからFFFFhまでのメモリアドレスを順次検査していき、RAMの読出し比較がエラーとなればそこで止まり、最後まで正常であればFFFFhの次に0000hを検査したときにRAMの読出し比較がエラーとなり止まります。
+
+　私の環境ではバンク切替対応基板で正常に終了することは確認済みですが、困ったことに未対策のMZ-80K_SD Rev1.5.3基板でも正常に終了してしまいました。
+
+　0000hでエラーとなって止まること、MZ-80Kではスタートと同時にエラーで止まりますのでテストプログラムは正常だと思います。
+
+　ROMとRAMのアクセスタイムが関係しているのかもしれませんが、バンク切替対応基板の優位性が明確にはなっていません。
+
+　なお、ロジックアナライザを使い、
+
+　　バンク切替対応基板ではOUT (E1h),AでF000h～FFFFhアクセス時にもROMCEがDisableであり、OUT (E3h),A、OUT (E4h),AではF000h～FFFFhアクセス時にROMCEがEnableになることは確認しています。
+
+　　未対策のMZ-80K_SD Rev1.5.3基板ではOUT (E1h),A、OUT (E3h),A、OUT (E4h),Aいずれの状態でもF000h～FFFFhアクセス時にROMCEはEnableのままです。
 
 ## 謝辞
 　基板の作成に当たり以下のデータを使わせていただきました。ありがとうございました。
