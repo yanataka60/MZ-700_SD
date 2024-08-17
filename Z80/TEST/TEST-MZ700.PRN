@@ -1,0 +1,94 @@
+			  Z80 ASSEMBLER - ZASM VER 1.6
+                      	;
+  0006                	LETLN		EQU		0006H
+  000C                	PRNTS		EQU		000CH
+  03BA                	PRTWRD		EQU		03BAH
+  03C3                	PRTBYT		EQU		03C3H
+  0DDC                	DPCT		EQU		0DDCH
+  0082                	MONITOR_80K	EQU		0082H
+  00AD                	MONITOR_700	EQU		00ADH
+                      	
+  12A0                				ORG		12A0H
+                      				
+  12A0  2100F0        				LD		HL,0F000H		;F000h～FFFFhまでを検査、実際には0000hをテストした時にRAMの読出し異常で停止
+  12A3  110010        				LD		DE,1000H
+                      	
+  12A6                	LP1:
+  12A6  CDBA03        				CALL	PRTWRD			;検査アドレス表示
+  12A9  CD0C00        				CALL	PRNTS
+  12AC  0600          				LD		B,00H			;RAMへの書込みデータ、00h、FFh～01hまでを書き込み、読み出して一致するかをテスト
+  12AE  7E            				LD		A,(HL)			;ROM読出し
+  12AF  4F            				LD		C,A
+  12B0  CDC303        				CALL	PRTBYT			;ROM読出しデータ表示
+  12B3  CD0C00        				CALL	PRNTS
+                      	
+  12B6  D3E1          	LP2:		OUT		(0E1H),A		;RAM選択
+  12B8  78            				LD		A,B
+  12B9  77            				LD		(HL),A			;RAM書き込み
+  12BA  D3E3          				OUT		(0E3H),A		;ROM選択
+                      	
+  12BC  F5            				PUSH	AF
+  12BD  7E            				LD		A,(HL)			;ROM読出し
+  12BE  F5            				PUSH	AF
+  12BF  CDC303        				CALL	PRTBYT			;ROM読出しデータ表示
+  12C2  CD0C00        				CALL	PRNTS
+  12C5  F1            				POP		AF
+  12C6  B9            				CP		C				;さっき読み出したROMのデータと一致しているか?
+  12C7  2041          				JR		NZ,ERR2			;不一致ならエラー
+  12C9  F1            				POP		AF
+                      	
+  12CA  F5            				PUSH	AF
+  12CB  CDC303        				CALL	PRTBYT			;RAM書き込みデータ表示
+  12CE  CD0C00        				CALL	PRNTS
+  12D1  F1            				POP		AF
+  12D2  D3E1          				OUT		(0E1H),A		;RAM選択
+  12D4  7E            				LD		A,(HL)			;RAM読出し
+  12D5  D3E3          				OUT		(0E3H),A		;ROM選択
+  12D7  E5            				PUSH	HL
+  12D8  D5            				PUSH	DE
+  12D9  F5            				PUSH	AF
+  12DA  CDC303        				CALL	PRTBYT			;RAM読出しデータ表示
+  12DD  F1            				POP		AF
+  12DE  B8            				CP		B				;RAM書き込みデータと読出しデータが一致しているか?
+  12DF  202A          				JR		NZ,ERR1			;不一致ならエラー
+  12E1  D1            				POP		DE
+  12E2  E1            				POP		HL
+                      	
+  12E3  3EC4          				LD		A,0C4H			;カーソルを左に8文字戻す
+  12E5  CDDC0D        				CALL	DPCT
+  12E8  CDDC0D        				CALL	DPCT
+  12EB  CDDC0D        				CALL	DPCT
+  12EE  CDDC0D        				CALL	DPCT
+  12F1  CDDC0D        				CALL	DPCT
+  12F4  CDDC0D        				CALL	DPCT
+  12F7  CDDC0D        				CALL	DPCT
+  12FA  CDDC0D        				CALL	DPCT
+                      				
+  12FD  10B7          				DJNZ	LP2				;ループ
+                      				
+  12FF  CD0600        				CALL	LETLN			;改行
+  1302  23            				INC		HL				;アドレス+1
+  1303  1B            				DEC		DE
+  1304  7A            				LD		A,D
+  1305  B3            				OR		E
+  1306  209E          				JR		NZ,LP1			;ループ
+  1308  1803          				JR		MON
+                      				
+  130A  F1            	ERR2:		POP		AF
+  130B  D1            	ERR1:		POP		DE
+  130C  E1            				POP		HL
+                      	
+  130D  214E01        	MON:		LD		HL,014EH
+  1310  7E            				LD		A,(HL)
+  1311  FE50          				CP		'P'             ;014EHが'P'ならMZ-80K
+  1313  CA8200        				JP		Z,MONITOR_80K
+  1316  FE4E          				CP		'N'             ;014EHが'N'ならFN-700
+  1318  CA8200        				JP		Z,MONITOR_80K
+  131B  21EB06        				LD		HL,06EBH
+  131E  7E            				LD		A,(HL)
+  131F  FE4D          				CP		'M'             ;06EBHが'M'ならMZ-700
+  1321  CAAD00        				JP		Z,MONITOR_700
+  1324  C30000        				JP		0000H           ;識別できなかったら0000Hへジャンプ
+                      	
+  1327                				END
+
