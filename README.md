@@ -49,11 +49,9 @@ https://github.com/yanataka60/MZ80K_SD?tab=readme-ov-file#rom%E3%83%97%E3%83%AD%
 
 　ROMとRAMのアクセスタイムが関係しているのかもしれませんが、バンク切替対応基板の優位性が明確にはなっていません。
 
-　なお、ロジックアナライザを使い、
+　なお、ロジックアナライザを使い、バンク切替対応基板ではOUT (E1h),AでGAL16V8 Pin17(LATCH)がDisableとなり、OUT (E3h),A、OUT (E4h),AでGAL16V8 Pin17(LATCH)がEnableとなり正常に動作することは確認しています。
 
-　　バンク切替対応基板ではOUT (E1h),AでF000h～FFFFhアクセス時にもROMOEがDisableであり、OUT (E3h),A、OUT (E4h),AではF000h～FFFFhアクセス時にROMOEがEnableになることは確認しています。
-
-　　未対策のMZ-80K_SD Rev1.5.3基板ではOUT (E1h),A、OUT (E3h),A、OUT (E4h),Aいずれの状態でもF000h～FFFFhアクセス時にROMCEはEnableです。
+　　未対策のMZ-80K_SD Rev1.5.3基板ではOUT (E1h),A、OUT (E3h),A、OUT (E4h),Aいずれの状態でもF000h～FFFFhアクセス時にROMCEはEnableのままです。
 
 ## 謝辞
 　基板の作成に当たり以下のデータを使わせていただきました。ありがとうございました。
