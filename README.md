@@ -16,9 +16,9 @@
 
 　なお、GAL16V8、Arduino、ROMへ書き込むための機器が別途必要となります。
 
-　MZ-80K_SDのページではスイッチでROMを切り離すMZ-80K_SD Rev1.5.5基板を公開しています。
-
 #### 2024.10.10 MZ-80K_SD基板をRev1.5.5とし、ROMを切り離しスイッチを標準装備としました。
+
+　MZ-80K_SDのページではスイッチでROMを切り離すMZ-80K_SD Rev1.5.5基板を公開しています。
 
 https://github.com/yanataka60/MZ80K_SD
 
