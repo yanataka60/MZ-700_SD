@@ -8,13 +8,13 @@
 
 　MZ-80K_SDのページではスイッチでROMを切り離すMZ-80K_SD Rev1.5.5基板を公開しています。
 
+#### 2024.10.10 MZ-80K_SD基板をRev1.5.5とし、ROMを切り離しスイッチを標準装備としました。
+
 https://github.com/yanataka60/MZ80K_SD
 
 　Rev1.5.3基板でROMを切り離すスイッチを付ける方法はこちらです。
 
 https://github.com/yanataka60/MZ80K_SD?tab=readme-ov-file#rom%E5%88%87%E3%82%8A%E9%9B%A2%E3%81%97%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81%E6%94%B9%E9%80%A0
-
-#### 2024.10.10 MZ-80K_SD基板をRev1.5.5とし、ROMを切り離しスイッチを標準装備としました。
 
 　MZ-700_SDではバンクが切り替わったときにGAL16V8を使ってROMのDisable、Enableが自動で切り替わります。
 
