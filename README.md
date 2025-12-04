@@ -121,3 +121,7 @@ https://github.com/yanataka60/MZ80K_SD?tab=readme-ov-file#rom%E3%83%97%E3%83%AD%
 2024.10.10
 
 　正式公開
+
+2025.12.4
+
+　kuran_kuranさんにArduinoプログラムのバグを発見していただきました。精査した結果、不要な処理であったため削除しました。なお、未修正のままでも実害はありません。kuran_kuranさん、ありがとうございました。
