@@ -106,6 +106,22 @@ https://github.com/yanataka60/MZ80K_SD?tab=readme-ov-file#rom%E3%83%97%E3%83%AD%
 
 　　未対策のMZ-80K_SD Rev1.5.3基板ではOUT (E1h),A、OUT (E3h),A、OUT (E4h),Aいずれの状態でもF000h～FFFFhアクセス時にROMCEはEnableのままです。
 
+## EMMボード for MZ-700からの起動
+　拙作EMMボード for MZ-700をバッテリーバックアップに対応させたのでEMM_for_MZ-700から起動するコマンドを追加してみました。
+
+　https://github.com/yanataka60/EMM_for_MZ-700
+
+　コマンド「FDE0」～「FDE3」を使うことで「EMM0」～「EMM3」のHuBASICから起動させることが出来ます。
+
+　なお、EMMの00000番地が「01h」でなければEMMからの起動はせずにコマンド待ちに戻りますが、00000番地以降に異常があってもチェックはしていないので最悪暴走します。
+
+　MZ-700用HuBASICはテープ版しかなくそのままではEMMにHuBASICの起動イメージを作成することが出来ません。
+
+　BouKiCHiさんのHuDiskなどを使いMZ-700用HuBASICの起動ディスクイメージを作成したうえでEMMMENUのEMMLOADでEMMに書き込む必要があります。
+
+### ROMに書き込む
+　EMMフォルダ内のFD_rom.BINをROMライター(TL866II Plus等)を使って2764に書き込んでください。
+
 ## 謝辞
 　基板の作成に当たり以下のデータを使わせていただきました。ありがとうございました。
 
@@ -118,10 +134,8 @@ https://github.com/yanataka60/MZ80K_SD?tab=readme-ov-file#rom%E3%83%97%E3%83%AD%
 　　https://github.com/kuninet/PC-8001-SD-8kRAM
 
 ## 追記
-2024.10.10
+2024.10.10 正式公開
 
-　正式公開
+2025.12.4 kuran_kuranさんにArduinoプログラムのバグを発見していただきました。精査した結果、不要な処理が含まれていることが原因であったため不要な処理部分を削除しました。なお、未修正のままでも実害はありません。kuran_kuranさん、ありがとうございました。
 
-2025.12.4
-
-　kuran_kuranさんにArduinoプログラムのバグを発見していただきました。精査した結果、不要な処理が含まれていることが原因であったため不要な処理部分を削除しました。なお、未修正のままでも実害はありません。kuran_kuranさん、ありがとうございました。
+2026.1.23 EMMサポートプログラムを追加。
