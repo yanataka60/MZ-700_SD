@@ -31,9 +31,10 @@ https://github.com/yanataka60/MZ80K_SD?tab=readme-ov-file#rom%E5%88%87%E3%82%8A%
 
 ### 多段ロードの詳細についてはMZ-80K_SDの「BARYON対応」「多段ロード対応」を参照してください。
 
-BARYON対応:https://github.com/yanataka60/MZ80K_SD#baryon%E5%AF%BE%E5%BF%9C2026813
+　BARYON対応:https://github.com/yanataka60/MZ80K_SD#baryon%E5%AF%BE%E5%BF%9C2026813
 
-多段ロード対応:https://github.com/yanataka60/MZ80K_SD#%E5%A4%9A%E6%AE%B5%E3%83%AD%E3%83%BC%E3%83%89%E5%AF%BE%E5%BF%9C2026813
+　多段ロード対応:https://github.com/yanataka60/MZ80K_SD#%E5%A4%9A%E6%AE%B5%E3%83%AD%E3%83%BC%E3%83%89%E5%AF%BE%E5%BF%9C2026813
+　Arduinoプログラム、ROMプログラムともMZ-80K_SD用に更新したものがそのまま使えます。
 
 ## 回路図
 　KiCadフォルダ内のMZ-700_SD.pdf参照
