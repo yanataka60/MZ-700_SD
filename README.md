@@ -26,6 +26,15 @@ https://github.com/yanataka60/MZ80K_SD
 
 https://github.com/yanataka60/MZ80K_SD?tab=readme-ov-file#rom%E5%88%87%E3%82%8A%E9%9B%A2%E3%81%97%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81%E6%94%B9%E9%80%A0
 
+
+### (2026.8.13追記)すねいるさんのBARYONに対応するためArduinoプログラムを更新しました。また、ROMプログラムも合わせて更新することで多段ロードにも対応します。
+
+### 多段ロードの詳細についてはMZ-80K_SDの「BARYON対応」「多段ロード対応」を参照してください。
+
+BARYON対応:https://github.com/yanataka60/MZ80K_SD#baryon%E5%AF%BE%E5%BF%9C2026813
+
+多段ロード対応:https://github.com/yanataka60/MZ80K_SD#%E5%A4%9A%E6%AE%B5%E3%83%AD%E3%83%BC%E3%83%89%E5%AF%BE%E5%BF%9C2026813
+
 ## 回路図
 　KiCadフォルダ内のMZ-700_SD.pdf参照
 
@@ -119,8 +128,23 @@ https://github.com/yanataka60/MZ80K_SD?tab=readme-ov-file#rom%E3%83%97%E3%83%AD%
 
 　BouKiCHiさんのHuDiskなどを使いMZ-700用HuBASICの起動ディスクイメージを作成したうえでEMMMENUのEMMLOADでEMMに書き込む必要があります。
 
+## Arduinoプログラム
+　Arduino IDEを使ってMZ-80K_SD/Arduinoフォルダ内のMZ-80K_SD.inoを書き込みます。
+
+https://github.com/yanataka60/MZ80K_SD/tree/main/Arduino/MZ-80K_SD
+
+　SdFatライブラリを使用していますのでArduino IDEメニューのライブラリの管理からライブラリマネージャを立ち上げて「SdFat」をインストールしてください。
+
+　「SdFat」で検索すれば見つかります。「SdFat」と「SdFat - Adafruit Fork」が見つかりますが「SdFat」のほうを使っています。
+
+注)Arduinoを基板に直付けしている場合、Arduinoプログラムを書き込むときは、MZ-700本体とは接続を外し、74LS04を外したうえで書き込んでください。
+
 ### ROMに書き込む
-　EMMフォルダ内のFD_rom.BINをROMライター(TL866II Plus等)を使って2764に書き込んでください。
+~~　EMMフォルダ内のFD_rom.BINをROMライター(TL866II Plus等)を使って2764に書き込んでください。~~
+
+　MZ-80K_SD/Z80フォルダ内のFD_rom.BINをROMライター(TL866II Plus等)を使って2764に書き込んでください。
+
+https://github.com/yanataka60/MZ80K_SD/blob/main/Z80/FD_rom.BIN
 
 ## 謝辞
 　基板の作成に当たり以下のデータを使わせていただきました。ありがとうございました。
@@ -139,3 +163,5 @@ https://github.com/yanataka60/MZ80K_SD?tab=readme-ov-file#rom%E3%83%97%E3%83%AD%
 2025.12.4 kuran_kuranさんにArduinoプログラムのバグを発見していただきました。精査した結果、不要な処理が含まれていることが原因であったため不要な処理部分を削除しました。なお、未修正のままでも実害はありません。kuran_kuranさん、ありがとうございました。
 
 2026.1.23 EMMサポートプログラムを追加。
+
+2026.8.13 BARYONに対応しました。retrogamer128さんの要望により多段ロードに対応しました。
