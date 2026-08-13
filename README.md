@@ -128,23 +128,10 @@ https://github.com/yanataka60/MZ80K_SD?tab=readme-ov-file#rom%E3%83%97%E3%83%AD%
 
 　BouKiCHiさんのHuDiskなどを使いMZ-700用HuBASICの起動ディスクイメージを作成したうえでEMMMENUのEMMLOADでEMMに書き込む必要があります。
 
-## Arduinoプログラム
-　Arduino IDEを使ってMZ-80K_SD/Arduinoフォルダ内のMZ-80K_SD.inoを書き込みます。
-
-https://github.com/yanataka60/MZ80K_SD/tree/main/Arduino/MZ-80K_SD
-
-　SdFatライブラリを使用していますのでArduino IDEメニューのライブラリの管理からライブラリマネージャを立ち上げて「SdFat」をインストールしてください。
-
-　「SdFat」で検索すれば見つかります。「SdFat」と「SdFat - Adafruit Fork」が見つかりますが「SdFat」のほうを使っています。
-
-注)Arduinoを基板に直付けしている場合、Arduinoプログラムを書き込むときは、MZ-700本体とは接続を外し、74LS04を外したうえで書き込んでください。
-
 ### ROMに書き込む
-~~　EMMフォルダ内のFD_rom.BINをROMライター(TL866II Plus等)を使って2764に書き込んでください。~~
+~~EMMフォルダ内のFD_rom.BINをROMライター(TL866II Plus等)を使って2764に書き込んでください。~~
 
-　MZ-80K_SD/Z80フォルダ内のFD_rom.BINをROMライター(TL866II Plus等)を使って2764に書き込んでください。
-
-https://github.com/yanataka60/MZ80K_SD/blob/main/Z80/FD_rom.BIN
+(2026.8.13)多段ロード対応に伴い、MZ-80K_SDに統合しました。MZ-80K_SD/Z80フォルダ内のFD_rom.BINを使ってください。
 
 ## 謝辞
 　基板の作成に当たり以下のデータを使わせていただきました。ありがとうございました。
